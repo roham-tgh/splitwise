@@ -12,7 +12,7 @@ Explanation:
 public enum Menu {
     LOGIN_MENU(new LoginMenu()),
     SIGNUP_MENU(new SignUpMenu()),
-    DASHBOARD_MENU(new Dashboard()),
+    DASHBOARD(new Dashboard()),
     PROFILE_MENU(new ProfileMenu()),
     EXIT_MENU(new ExitMenu());
 

@@ -1,4 +1,8 @@
 package views;
+
+import java.util.Scanner;
+import models.App;
+
 /*
 Explanation:
 - This is a view class for the ExitMenu.
@@ -6,10 +10,12 @@ Explanation:
  */
 
 public class ExitMenu implements AppMenu {
-    @Override
-    public void show() {
-        System.out.println("Goodbye!");
-        System.exit(0);
+    static {
+        App.runApp = false;
     }
+    @Override
+    public void check(Scanner scanner) {
 
+    }
+    
 }

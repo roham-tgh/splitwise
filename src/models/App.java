@@ -1,9 +1,7 @@
 package models;
-import java.lang.classfile.instruction.ThrowInstruction;
 import java.util.*;
 import models.enums.Menu;
 import views.AppMenu;
-import views.ExitMenu;
 
 /*
 Explanation:
@@ -19,24 +17,22 @@ public class App {
     public static final ArrayList<User> users = new ArrayList<>();
     public static boolean runApp = true;
     private static User currentUser = null;
-    private static Menu currentMenu = Menu.SIGNUP_MENU;
+    private static AppMenu currentMenu = Menu.SIGNUP_MENU.getMenu();
+    public static ArrayList<Group> groups = new ArrayList<>();
 
     public static AppMenu getCurrentMenu() {
-        return currentMenu.getMenu();
+        return currentMenu;
     }
     
-    public static void setCurrentMenu(Menu menu) {
-        if (menu.getMenu().getClass().equals(ExitMenu.class)) {
-            runApp = false;
-        }
+    public static void setCurrentMenu(AppMenu menu) {
         currentMenu = menu;
     }
 
-    public User getCurrentUser() {
+    public static User getCurrentUser() {
         return App.currentUser;
     }
 
-    public void setCurrentUser(User user) {
+    public static void setCurrentUser(User user) {
         App.currentUser = user;
     }
     

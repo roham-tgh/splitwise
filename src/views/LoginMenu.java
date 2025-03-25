@@ -1,6 +1,12 @@
 package views;
 
+import controllers.LoginMenuController;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import models.App;
+import models.Result;
+import models.enums.LoginMenuCommands;
+import models.enums.Menu;
 
 /*
 Explanation:
@@ -12,11 +18,33 @@ Explanation:
 
 public class LoginMenu implements AppMenu {
     static {
-        System.out.println("you are now in login menu!");
+        if (App.getCurrentUser() != null) App.setCurrentUser(null);
     }
     @Override
     public void check(Scanner scanner) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        String input = scanner.nextLine();
+        Matcher matcher;
+        if ((matcher = LoginMenuCommands.LOGIN_REGEX.getMatcher(input)) != null) {
+            Result result = new LoginMenuController().login(
+                matcher.group("username"), 
+                matcher.group("password")); 
+            System.out.println(result.message());
+            if (result.isSuccessful()) {
+                App.setCurrentMenu(Menu.DASHBOARD.getMenu());
+            }
+        }
+        else if ((matcher = LoginMenuCommands.FORGET_PASSWORD_REGEX.getMatcher(input)) != null) {
+            Result result = new LoginMenuController().forgetPassword(
+                matcher.group("username"), 
+                matcher.group("email")); 
+            System.out.println(result.message());
+        }
+        else if (LoginMenuCommands.SIGNUP_MENU_REGEX.getMatcher(input) != null) {
+            App.setCurrentMenu(Menu.SIGNUP_MENU.getMenu());        
+        } 
+        else {
+            System.out.println("invalid command!");
+        }
     }
 
 }

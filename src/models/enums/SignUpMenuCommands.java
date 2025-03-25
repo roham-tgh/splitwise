@@ -3,7 +3,6 @@ package models.enums;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.print.attribute.standard.MediaSize.NA;
 
 /*
 Explanation:
@@ -21,7 +20,7 @@ public enum SignUpMenuCommands{
             "-p\\s+(?<password>\\S+)\\s+" +
             "-e\\s+(?<email>\\S+)\\s+" +
             "-n\\s+(?<name>\\S+)"),
-    LOGIN_REGEX("go\\s+to\\s+login\\s+menu");
+    LOGIN_MENU_REGEX("go\\s+to\\s+login\\s+menu");
 
     private final String pattern;
 

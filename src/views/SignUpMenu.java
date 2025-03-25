@@ -3,7 +3,9 @@ package views;
 import controllers.SignUpMenuController;
 import java.util.Scanner;
 import java.util.regex.Matcher;
+import models.App;
 import models.Result;
+import models.enums.Menu;
 import models.enums.SignUpMenuCommands;
 
 /*
@@ -13,7 +15,10 @@ Explanation:
 - notice that : this class should not have any logic and just use it to get inputs and handle it to use correct methods in controller.
  */
 
-public class SignUpMenu implements AppMenu{
+public class SignUpMenu implements AppMenu {
+    static {
+        if (App.getCurrentUser() != null) App.setCurrentUser(null);
+    }
 
     @Override
     public void check(Scanner scanner) {
@@ -27,11 +32,11 @@ public class SignUpMenu implements AppMenu{
                 matcher.group("name")); 
             System.out.println(result.message());
             if (result.isSuccessful()) {
-                new LoginMenu().check(scanner);
+                App.setCurrentMenu(Menu.LOGIN_MENU.getMenu());
             }
         } 
-        else if (SignUpMenuCommands.LOGIN_REGEX.getMatcher(input) != null) {
-            new LoginMenu().check(scanner);
+        else if (SignUpMenuCommands.LOGIN_MENU_REGEX.getMatcher(input) != null) {
+            App.setCurrentMenu(Menu.LOGIN_MENU.getMenu());        
         } 
         else {
             System.out.println("invalid command!");
