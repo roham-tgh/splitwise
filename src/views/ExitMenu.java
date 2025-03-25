@@ -5,6 +5,11 @@ Explanation:
 - We will just use it to end the program.
  */
 
-public class ExitMenu{
+public class ExitMenu implements AppMenu {
+    @Override
+    public void show() {
+        System.out.println("Goodbye!");
+        System.exit(0);
+    }
 
 }

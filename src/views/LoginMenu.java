@@ -1,4 +1,7 @@
 package views;
+
+import java.util.Scanner;
+
 /*
 Explanation:
 - This is a view class for the login menu.
@@ -7,6 +10,13 @@ Explanation:
  */
 
 
-public class LoginMenu {
+public class LoginMenu implements AppMenu {
+    static {
+        System.out.println("you are now in login menu!");
+    }
+    @Override
+    public void check(Scanner scanner) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 
 }

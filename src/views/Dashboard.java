@@ -6,6 +6,6 @@ Explanation:
 - notice that : this class should not have any logic and just use it to get inputs and handle it to use correct methods in controller.
  */
 
-public class Dashboard {
+public class Dashboard implements AppMenu{
 
 }

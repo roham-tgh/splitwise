@@ -6,6 +6,8 @@ Explanation:
 - put those information here and use them in your code.
  */
 
+import java.util.ArrayList;
+
 public class Group {
     private static int groupCount = 0;
     public static int getGroupCount() {
