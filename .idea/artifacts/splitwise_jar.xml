@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="splitwise:jar">
+    <output-path>$PROJECT_DIR$/../../artifacts/splitwise_jar</output-path>
+    <root id="archive" name="splitwise.jar">
+      <element id="module-output" name="splitwise" />
+    </root>
+  </artifact>
+</component>
